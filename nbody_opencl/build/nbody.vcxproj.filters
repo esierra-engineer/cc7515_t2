@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\GitHub\cc7515_t2_ws\cc7515_t2\nbody_opencl\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitHub\cc7515_t2_ws\cc7515_t2\nbody_opencl\src\nbody_opencl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitHub\cc7515_t2_ws\cc7515_t2\nbody_opencl\src\nbody_cpu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\GitHub\cc7515_t2_ws\cc7515_t2\nbody_opencl\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{EA15C20A-E71F-353E-872F-3375C6DCB614}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

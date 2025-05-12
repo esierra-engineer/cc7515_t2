@@ -1,3 +1,4 @@
+#include "nbody_opencl.h"
 #include <CL/cl.h>
 #include <vector>
 #include <iostream>
@@ -5,25 +6,26 @@
 #include <chrono>
 #include <cmath>
 #include <stdexcept>
+#include <cstring> // Para _strdup
 
 #define CHECK_CL(err, msg) if (err != CL_SUCCESS) throw std::runtime_error(msg);
 
 const char* loadKernelSource(const char* filename) {
     std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "[OpenCL] Failed to open kernel file: " << filename << std::endl;
+        return nullptr;
+    }
     std::string src((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
-    return strdup(src.c_str());
+    return _strdup(src.c_str());
 }
 
-struct Body {
-    float x, y, z, mass;
-    float vx, vy, vz, pad;
-};
-
 void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
+
     int n = bodies.size();
     cl_int err;
 
-    // 1. Platform & device
+    // Plataforma y device
     cl_platform_id platform;
     cl_device_id device;
     err = clGetPlatformIDs(1, &platform, nullptr);
@@ -32,16 +34,16 @@ void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
     err = clGetDeviceIDs(platform, CL_DEVICE_TYPE_GPU, 1, &device, nullptr);
     CHECK_CL(err, "Failed to get device");
 
-    // 2. Context & queue
+    // Context y cola
     cl_context context = clCreateContext(nullptr, 1, &device, nullptr, nullptr, &err);
     CHECK_CL(err, "Failed to create context");
 
     cl_command_queue queue = clCreateCommandQueue(context, device, 0, &err);
     CHECK_CL(err, "Failed to create command queue");
 
-    // 3. Buffers
-    cl_mem posMassBuf = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float4) * n, nullptr, &err);
-    cl_mem velBuf     = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(float4) * n, nullptr, &err);
+    // Buffers
+    cl_mem posMassBuf = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_float4) * n, nullptr, &err);
+    cl_mem velBuf     = clCreateBuffer(context, CL_MEM_READ_WRITE, sizeof(cl_float4) * n, nullptr, &err);
     CHECK_CL(err, "Failed to create buffers");
 
     std::vector<cl_float4> posMass(n), vel(n);
@@ -54,8 +56,11 @@ void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
     err |= clEnqueueWriteBuffer(queue, velBuf,     CL_TRUE, 0, sizeof(cl_float4)*n, vel.data(),     0, nullptr, nullptr);
     CHECK_CL(err, "Failed to write data");
 
-    // 4. Kernel
+    // Kernel
     const char* source = loadKernelSource("kernel.cl");
+    if (!source) throw std::runtime_error("Could not load kernel.cl");
+    std::cout << "[OpenCL] Kernel source loaded.\n";
+
     cl_program program = clCreateProgramWithSource(context, 1, &source, nullptr, &err);
     CHECK_CL(err, "Failed to create program");
 
@@ -70,7 +75,7 @@ void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
     cl_kernel kernel = clCreateKernel(program, "nbody_step", &err);
     CHECK_CL(err, "Failed to create kernel");
 
-    // 5. Run
+    // Correr
     size_t globalSize = n;
 
     auto start = std::chrono::high_resolution_clock::now();
@@ -91,9 +96,9 @@ void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
     auto end = std::chrono::high_resolution_clock::now();
     float timeSec = std::chrono::duration<float>(end - start).count();
 
-    std::cout << "OpenCL time: " << timeSec << "s (" << (n * steps) / timeSec << " bodies/sec)\n";
+    std::cout << "[OpenCL] Time: " << timeSec << "s (" << (n * steps) / timeSec << " bodies/sec)\n";
 
-    // 6. Cleanup
+    // Limpiar
     clReleaseMemObject(posMassBuf);
     clReleaseMemObject(velBuf);
     clReleaseKernel(kernel);

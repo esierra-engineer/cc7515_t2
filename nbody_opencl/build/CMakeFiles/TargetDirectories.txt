@@ -1,0 +1,3 @@
+D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/nbody.dir
+D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/ALL_BUILD.dir
+D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,10 @@
+^D:\GITHUB\CC7515_T2_WS\CC7515_T2\NBODY_OPENCL\BUILD\CMAKEFILES\BCF604F8FF37BF3DF25BED7F56DD2A06\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl -BD:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/nbody_opencl.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

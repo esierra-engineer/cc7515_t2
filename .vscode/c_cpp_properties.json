@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "name": "Windows",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/include",
+        "C:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/ucrt",
+        "C:/Program Files (x86)/Windows Kits/10/Include/10.0.19041.0/shared"
+      ],
+      "defines": [],
+      "compilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.3x.xxxxx/bin/Hostx64/x64/cl.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "windows-msvc-x64"
+    }
+  ],
+  "version": 4
+}
