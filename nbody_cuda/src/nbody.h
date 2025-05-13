@@ -5,9 +5,15 @@
 #ifndef NBODY_H
 #define NBODY_H
 
+/**
+ * A structure to define a body
+ */
 struct Body {
+    // position
     float x, y, z;
+    // velocity
     float vx, vy, vz;
+    // mass
     float mass;
 };
 

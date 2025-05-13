@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CUDA_ARCHITECTURES native)
+set(CMAKE_CUDA_COMPILER "/usr/local/cuda/bin/nvcc")
 project(nbody_cuda LANGUAGES CXX CUDA)
 
 # Establecer estándares

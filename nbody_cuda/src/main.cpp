@@ -7,8 +7,8 @@
 #include "nbody.h"
 
 int main() {
-    const int n = 1024;
-    const int steps = 10;
+    const int n = 1024*8;
+    const int steps = 20;
 
     Body* bodiesCPU = new Body[n];
     Body* bodiesGPU = new Body[n];
