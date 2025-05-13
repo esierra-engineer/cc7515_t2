@@ -4,7 +4,7 @@
 #include <iostream>
 #include <chrono>
 #include <algorithm>
-#include "nbody.h"
+#include "include/nbody.h"
 
 int main() {
     const int n = 1024*8;

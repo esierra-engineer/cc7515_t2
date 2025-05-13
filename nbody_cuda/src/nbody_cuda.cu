@@ -1,11 +1,12 @@
 //
 // Created by erick on 5/8/25.
 //
-#include "nbody.h"
+#include "include/nbody.h"
 #include <cuda_runtime.h>
 #define G_CONSTANT 6.67430e-11f
 #define INT_STEP 0.01f
 #define NEAR_ZERO 1e-10f
+#define BLOCK_SIZE (32 * 8)
 
 // universal gravitational constant
 const float G = G_CONSTANT;
@@ -14,7 +15,7 @@ const float dt = INT_STEP;
 
 
 /**
- * CUDA kernel
+ * CUDA kernel. Uses global memory
  * bodies: pointer to bodies array
  * n number of bodies
  * **/
@@ -36,7 +37,75 @@ __global__ void updateBodies(Body* bodies, int n) {
     for (int j = 0; j < n; ++j) {
         // skip self
         if (i == j) continue;
-        // this other body
+        // this other body (global memory access here)
+        Body bj = bodies[j];
+
+        // the distance between bodies in x, y and z
+        float dx = bj.x - bi.x;
+        float dy = bj.y - bi.y;
+        float dz = bj.z - bi.z;
+
+        // euclidean distance (avoid division by zero by adding a small constant)
+        float distSqr = dx * dx + dy * dy + dz * dz + NEAR_ZERO;
+        // inverse of the distance
+        float invDist = rsqrtf(distSqr);
+
+        // Newton's gravity, vectorial form
+        float F = G * bi.mass * bj.mass * powf(invDist, 3.0f);
+
+        // update net force over body for x,y,z
+        Fx += F * dx;
+        Fy += F * dy;
+        Fz += F * dz;
+    }
+
+    /** update velocity
+     * if (F = m * a) and (a =  dv/dt)
+     * then (F = m * dv/dt)
+     * then (dv = F * dt / m)
+     * then v = v + dv
+     * **/
+    bi.vx += Fx / bi.mass * dt;
+    bi.vy += Fy / bi.mass * dt;
+    bi.vz += Fz / bi.mass * dt;
+
+    /** update position
+     * v = dx/dt
+     * dx = dv * dt
+     * x = x + dx
+     **/
+    bi.x += bi.vx * dt;
+    bi.y += bi.vy * dt;
+    bi.z += bi.vz * dt;
+
+    // store the body back into GLOBAL MEMORY
+    bodies[i] = bi;
+}
+
+/**
+* CUDA kernel. Uses shared memory
+ * @param bodies pointer to bodies array
+ * @param n number of bodies
+ */
+__global__ void updateBodiesUsingSharedMemory(Body* bodies, int n) {
+    // i is the body index (global thread index),
+    // each thread handles ONE BODY
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // index can go no longer than the number of bodies
+    if (i >= n) return;
+
+    // for this body
+    Body bi = bodies[i];
+
+    // border conditions, initial net force is null
+    float Fx = 0.0f, Fy = 0.0f, Fz = 0.0f;
+
+    // for each other body
+    for (int j = 0; j < n; ++j) {
+        // skip self
+        if (i == j) continue;
+        // this other body (global memory access here)
         Body bj = bodies[j];
 
         // the distance between bodies in x, y and z
@@ -105,7 +174,7 @@ void simulateNBodyCUDA(Body* h_bodies, int n, int steps) {
     cudaMemcpy(d_bodies, h_bodies, size, cudaMemcpyHostToDevice);
 
     // configure threads per block
-    int threadsPerBlock = 256;
+    int threadsPerBlock = BLOCK_SIZE;
     // The total number of blocks is the data size divided by the size of each block
     int numBlocks = (n + threadsPerBlock - 1) / threadsPerBlock;
 

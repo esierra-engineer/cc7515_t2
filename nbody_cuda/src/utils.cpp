@@ -1,7 +1,7 @@
 //
 // Created by erick on 5/8/25.
 //
-#include "nbody.h"
+#include "include/nbody.h"
 #include <cstdlib>
 
 void generateRandomBodies(Body* bodies, int n) {
