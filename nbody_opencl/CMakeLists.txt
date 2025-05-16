@@ -17,3 +17,5 @@ target_include_directories(nbody PRIVATE
 target_link_libraries(nbody PRIVATE ${OpenCL_LIBRARIES})
 
 configure_file(kernel.cl kernel.cl COPYONLY)
+configure_file(kernel_local.cl kernel_local.cl COPYONLY)
+configure_file(kernel_2d.cl kernel_2d.cl COPYONLY)

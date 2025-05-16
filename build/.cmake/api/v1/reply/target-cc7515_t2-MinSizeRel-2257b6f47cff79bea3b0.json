@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Debug/cc7515_t2.exe"
+			"path" : "MinSizeRel/cc7515_t2.exe"
 		},
 		{
-			"path" : "Debug/cc7515_t2.pdb"
+			"path" : "MinSizeRel/cc7515_t2.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -29,19 +29,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 22,
+				"line" : 24,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 32,
+				"line" : 34,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 11,
+				"line" : 13,
 				"parent" : 0
 			}
 		]
@@ -52,7 +52,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG"
 				},
 				{
 					"backtrace" : 2,
@@ -86,7 +86,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-D_WINDOWS -Xcompiler=\"/W3 /GR /EHsc\" -Xcompiler=\"-MDd  -Zi -Ob0 -Od /RTC1\" \"--generate-code=arch=compute_52,code=[compute_52,sm_52]\""
+					"fragment" : "-D_WINDOWS -Xcompiler=\"/W3 /GR /EHsc\" -Xcompiler=\"-MD -O1 -Ob1\" -DNDEBUG \"--generate-code=arch=compute_52,code=[compute_52,sm_52]\""
 				},
 				{
 					"backtrace" : 2,
@@ -127,11 +127,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL",
+				"fragment" : "/machine:x64 /INCREMENTAL:NO",
 				"role" : "flags"
 			},
 			{

@@ -38,3 +38,5 @@ D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/4.0.2/CMakeCXXCom
 D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/4.0.2/CMakeRCCompiler.cmake
 D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/4.0.2/CMakeSystem.cmake
 D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/kernel.cl
+D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/kernel_2d.cl
+D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/kernel_local.cl

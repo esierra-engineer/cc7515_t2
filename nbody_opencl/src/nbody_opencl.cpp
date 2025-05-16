@@ -6,7 +6,7 @@
 #include <chrono>
 #include <cmath>
 #include <stdexcept>
-#include <cstring> // Para _strdup
+#include <cstring>
 
 #define CHECK_CL(err, msg) if (err != CL_SUCCESS) throw std::runtime_error(msg);
 
@@ -20,7 +20,7 @@ const char* loadKernelSource(const char* filename) {
     return _strdup(src.c_str());
 }
 
-void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
+void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt, const char* kernelFilename, size_t localSize) {
 
     int n = bodies.size();
     cl_int err;
@@ -57,7 +57,7 @@ void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
     CHECK_CL(err, "Failed to write data");
 
     // Kernel
-    const char* source = loadKernelSource("kernel.cl");
+    const char* source = loadKernelSource(kernelFilename);
     if (!source) throw std::runtime_error("Could not load kernel.cl");
     std::cout << "[OpenCL] Kernel source loaded.\n";
 
@@ -76,7 +76,7 @@ void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
     CHECK_CL(err, "Failed to create kernel");
 
     // Correr
-    size_t globalSize = n;
+    size_t globalSize = ((n + localSize - 1) / localSize) * localSize;
 
     auto start = std::chrono::high_resolution_clock::now();
 
@@ -87,7 +87,7 @@ void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt) {
         err |= clSetKernelArg(kernel, 3, sizeof(int), &n);
         CHECK_CL(err, "Failed to set kernel args");
 
-        err = clEnqueueNDRangeKernel(queue, kernel, 1, nullptr, &globalSize, nullptr, 0, nullptr, nullptr);
+        err = clEnqueueNDRangeKernel(queue, kernel, 1, nullptr, &globalSize, &localSize, 0, nullptr, nullptr);
         CHECK_CL(err, "Kernel launch failed");
 
         clFinish(queue);
