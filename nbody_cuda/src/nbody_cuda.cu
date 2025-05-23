@@ -3,15 +3,13 @@
 //
 #include "include/nbody.h"
 #include <cuda_runtime.h>
+#include "include/utils.h"
 #define G_CONSTANT 6.67430e-11f
-#define INT_STEP 0.01f
 #define NEAR_ZERO 1e-10f
 #define BLOCK_SIZE (32 * 8)
 
 // universal gravitational constant
 const float G = G_CONSTANT;
-// integration step
-const float dt = INT_STEP;
 
 
 /**
@@ -19,7 +17,7 @@ const float dt = INT_STEP;
  * bodies: pointer to bodies array
  * n number of bodies
  * **/
-__global__ void updateBodies(Body* bodies, int n) {
+__global__ void updateBodies(Body* bodies, int n, float dt = 0.01f) {
     // i is the body index (global thread index),
     // each thread handles ONE BODY
     int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -87,7 +85,7 @@ __global__ void updateBodies(Body* bodies, int n) {
  * @param bodies pointer to bodies array
  * @param n number of bodies
  */
-__global__ void updateBodiesUsingSharedMemory(Body* bodies, int n) {
+__global__ void updateBodiesUsingSharedMemory(Body* bodies, int n, float dt = 0.01f) {
     // i is the body index (global thread index),
     // each thread handles ONE BODY
     int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -161,7 +159,7 @@ __global__ void updateBodiesUsingSharedMemory(Body* bodies, int n) {
  * @param n number of bodies
  * @param steps simulation steps
  */
-void simulateNBodyCUDA(Body* h_bodies, int n, int steps) {
+void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelFilename, size_t localSize, int n) {
     // destination memory address pointer
     Body* d_bodies;
     // in memory size of n bodies
@@ -174,14 +172,32 @@ void simulateNBodyCUDA(Body* h_bodies, int n, int steps) {
     cudaMemcpy(d_bodies, h_bodies, size, cudaMemcpyHostToDevice);
 
     // configure threads per block
-    int threadsPerBlock = BLOCK_SIZE;
+    size_t threadsPerBlock = localSize;
     // The total number of blocks is the data size divided by the size of each block
-    int numBlocks = (n + threadsPerBlock - 1) / threadsPerBlock;
+    size_t numBlocks = (n + threadsPerBlock - 1) / threadsPerBlock;
+
+    // Kernel
+    CUfunction kernel = loadKernelSource(kernelFilename);
 
     // for each step
     for (int s = 0; s < steps; ++s) {
         // kernel launch
-        updateBodies<<<numBlocks, threadsPerBlock>>>(d_bodies, n);
+        //updateBodies<<<numBlocks, threadsPerBlock>>>(d_bodies, n);
+        // Kernel args deben ser punteros a los datos
+        void* kernelArgs[] = {
+            (void*)&d_bodies,
+            (void*)&n,
+            (void*)&dt
+        };
+
+        checkCudaErrors(
+            cuLaunchKernel(kernel,
+            numBlocks, 1, 1,                    // grid
+            threadsPerBlock, 1, 1,             // block
+            0, nullptr,                        // shared memory and stream
+            kernelArgs, nullptr)                // args
+            );
+
         // necesary to exchange info between streams
         cudaDeviceSynchronize();
     }

@@ -1,6 +1,7 @@
 //
 // Created by erick on 5/8/25.
 //
+#include <cstdlib>
 
 #ifndef NBODY_H
 #define NBODY_H
@@ -17,8 +18,8 @@ struct Body {
     float mass;
 };
 
-void simulateNBodyCPU(Body* bodies, int n, int steps);
-void simulateNBodyCUDA(Body* bodies, int n, int steps);
+void simulateNBodyCPU(Body* bodies, int n, int steps, float dt = 0.01f);
+void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelFilename, size_t localSize, int n);
 void generateRandomBodies(Body* bodies, int n);
 
 #endif

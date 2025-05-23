@@ -5,9 +5,8 @@
 #include <cmath>
 
 const float G = 6.67430e-11f;
-const float dt = 0.01f;
 
-void simulateNBodyCPU(Body* bodies, int n, int steps) {
+void simulateNBodyCPU(Body* bodies, int n, int steps, float dt) {
     for (int s = 0; s < steps; ++s) {
         for (int i = 0; i < n; ++i) {
             float Fx = 0.0f, Fy = 0.0f, Fz = 0.0f;

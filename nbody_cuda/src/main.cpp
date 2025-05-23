@@ -4,33 +4,89 @@
 #include <iostream>
 #include <chrono>
 #include <algorithm>
+#include <fstream>
+#include <vector>
+#include <cstdlib>
 #include "include/nbody.h"
 
+void benchmarkCPU(Body* bodies, int n, int steps, float dt, std::ofstream& out) {
+    std::cout << "\n[CPU] Simulando con n = " << n << ", steps = " << steps << "...\n";
+
+    auto start = std::chrono::high_resolution_clock::now();
+    simulateNBodyCPU(bodies, n, steps, dt);
+    auto end = std::chrono::high_resolution_clock::now();
+    float cpuTime = std::chrono::duration<float>(end - start).count();
+    std::cout << "[CPU] Time: " << cpuTime << "s\n";
+
+    out << n << "," << steps << ",CPU,-," << cpuTime << "\n";
+}
+
+void benchmarkGPU(int n, int steps, float dt, std::ofstream& out,
+                const std::string& kernelName, size_t localSize,
+                Body* gpuBodies) {
+    std::cout << "\n[GPU] Simulando con n = " << n
+            << ", steps = " << steps
+            << ", kernel = " << kernelName
+            << ", localSize = " << localSize << "...\n";
+
+    //std::vector<Body> gpuBodies = originalBodies;
+
+    try {
+        auto start = std::chrono::high_resolution_clock::now();
+        simulateNBodyCUDA(gpuBodies, steps, dt, kernelName.c_str(), localSize, n);
+        auto end = std::chrono::high_resolution_clock::now();
+        float gpuTime = std::chrono::duration<float>(end - start).count();
+
+        out << n << "," << steps << "," << kernelName << "," << localSize << "," << gpuTime << "\n";
+    } catch (const std::exception& e) {
+        std::cerr << "[ERROR] Falló experimento con kernel=" << kernelName
+                << ", localSize=" << localSize << ", n=" << n
+                << ", steps=" << steps << ": " << e.what() << "\n";
+        out << n << "," << steps << "," << kernelName << "," << localSize << ",ERROR\n";
+    }
+}
+
 int main() {
-    const int n = 1024*8;
-    const int steps = 20;
+    const float dt = 0.01f;
 
-    Body* bodiesCPU = new Body[n];
-    Body* bodiesGPU = new Body[n];
+    std::vector<int> sizes = {128, 256, 512, 1024, 2048, 4096};
+    std::vector<int> stepsList = {10, 100, 1000};
+    std::vector<size_t> localSizes = {32, 64, 70, 96, 100, 128};
 
-    generateRandomBodies(bodiesCPU, n);
-    std::copy(bodiesCPU, bodiesCPU + n, bodiesGPU);
+    std::vector<std::string> kernels = {
+        "cmake-build-debug/kernel_1.ptx"
+    };
 
-    auto startCPU = std::chrono::high_resolution_clock::now();
-    simulateNBodyCPU(bodiesCPU, n, steps);
-    auto endCPU = std::chrono::high_resolution_clock::now();
-    double timeCPU = std::chrono::duration<double>(endCPU - startCPU).count();
+    std::ofstream out("/media/storage/git/cc7515_t2/nbody_cuda/CUDA_resultados.csv");
+    out << "n,steps,method,localSize,time\n";
 
-    auto startGPU = std::chrono::high_resolution_clock::now();
-    simulateNBodyCUDA(bodiesGPU, n, steps);
-    auto endGPU = std::chrono::high_resolution_clock::now();
-    double timeGPU = std::chrono::duration<double>(endGPU - startGPU).count();
+    // === CPU ===
 
-    std::cout << "CPU time: " << timeCPU << " s\n";
-    std::cout << "GPU time: " << timeGPU << " s\n";
-    std::cout << "Speedup: " << timeCPU / timeGPU << "x\n";
+    //for (int steps : stepsList) {
+     //   for (int n : sizes) {
+      //      Body* bodiesCPU = new Body[n];
+       //     generateRandomBodies(bodiesCPU, n);
+        //    benchmarkCPU(bodiesCPU, n, steps, dt, out);
+        //    delete[] bodiesCPU;
+       // }
+   // }
 
-    delete[] bodiesCPU;
-    delete[] bodiesGPU;
+    // === GPU por kernel ===
+    for (const std::string& kernel : kernels) {
+        for (int steps : stepsList) {
+            for (int n : sizes) {
+                Body* bodiesGPU = new Body[n];
+                generateRandomBodies(bodiesGPU, n);
+
+                for (size_t localSize : localSizes) {
+                    benchmarkGPU(n, steps, dt, out, kernel, localSize, bodiesGPU);
+                }
+                delete[] bodiesGPU;
+            }
+        }
+    }
+
+    out.close();
+    std::cout << "\nResultados guardados en resultados.csv\n";
     return 0;
 }
