@@ -48,7 +48,7 @@ void benchmarkGPU(int n, int steps, float dt, std::ofstream& out,
 int main() {
     const float dt = 0.01f;
 
-    std::vector<int> sizes = {128, 256, 512, 1024, 2048, 4096};
+    std::vector<int> sizes = {128, 256, 512};
     std::vector<int> stepsList = {10, 100, 1000};
     std::vector<size_t> localSizes = {32, 64, 70, 96, 100, 128};
 
