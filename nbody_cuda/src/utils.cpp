@@ -39,7 +39,7 @@ CUfunction loadKernelSource(const char* filename) {
 
     // Get function
     CUfunction kernel;
-    checkCudaErrors(cuModuleGetFunction(&kernel, module, "addKernel"));
+    checkCudaErrors(cuModuleGetFunction(&kernel, module, "updateBodies"));
 
     return kernel;
 }

@@ -3,10 +3,8 @@
 //
 #include <iostream>
 #include <chrono>
-#include <algorithm>
 #include <fstream>
 #include <vector>
-#include <cstdlib>
 #include "include/nbody.h"
 
 void benchmarkCPU(Body* bodies, int n, int steps, float dt, std::ofstream& out) {
@@ -44,6 +42,7 @@ void benchmarkGPU(int n, int steps, float dt, std::ofstream& out,
                 << ", steps=" << steps << ": " << e.what() << "\n";
         out << n << "," << steps << "," << kernelName << "," << localSize << ",ERROR\n";
     }
+
 }
 
 int main() {
@@ -54,7 +53,8 @@ int main() {
     std::vector<size_t> localSizes = {32, 64, 70, 96, 100, 128};
 
     std::vector<std::string> kernels = {
-        "cmake-build-debug/kernel_1.ptx"
+        "kernel_1.ptx",
+        "kernel_2.ptx"
     };
 
     std::ofstream out("/media/storage/git/cc7515_t2/nbody_cuda/CUDA_resultados.csv");
@@ -62,14 +62,14 @@ int main() {
 
     // === CPU ===
 
-    //for (int steps : stepsList) {
-     //   for (int n : sizes) {
-      //      Body* bodiesCPU = new Body[n];
-       //     generateRandomBodies(bodiesCPU, n);
-        //    benchmarkCPU(bodiesCPU, n, steps, dt, out);
-        //    delete[] bodiesCPU;
-       // }
-   // }
+    for (int steps : stepsList) {
+        for (int n : sizes) {
+            Body* bodiesCPU = new Body[n];
+            generateRandomBodies(bodiesCPU, n);
+            benchmarkCPU(bodiesCPU, n, steps, dt, out);
+            delete[] bodiesCPU;
+        }
+    }
 
     // === GPU por kernel ===
     for (const std::string& kernel : kernels) {

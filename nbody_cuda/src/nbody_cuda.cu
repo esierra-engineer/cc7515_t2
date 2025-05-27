@@ -4,149 +4,6 @@
 #include "include/nbody.h"
 #include <cuda_runtime.h>
 #include "include/utils.h"
-#define G_CONSTANT 6.67430e-11f
-#define NEAR_ZERO 1e-10f
-#define BLOCK_SIZE (32 * 8)
-
-// universal gravitational constant
-const float G = G_CONSTANT;
-
-
-/**
- * CUDA kernel. Uses global memory
- * bodies: pointer to bodies array
- * n number of bodies
- * **/
-__global__ void updateBodies(Body* bodies, int n, float dt = 0.01f) {
-    // i is the body index (global thread index),
-    // each thread handles ONE BODY
-    int i = blockIdx.x * blockDim.x + threadIdx.x;
-
-    // index can go no longer than the number of bodies
-    if (i >= n) return;
-
-    // for this body
-    Body bi = bodies[i];
-
-    // border conditions, initial net force is null
-    float Fx = 0.0f, Fy = 0.0f, Fz = 0.0f;
-
-    // for each other body
-    for (int j = 0; j < n; ++j) {
-        // skip self
-        if (i == j) continue;
-        // this other body (global memory access here)
-        Body bj = bodies[j];
-
-        // the distance between bodies in x, y and z
-        float dx = bj.x - bi.x;
-        float dy = bj.y - bi.y;
-        float dz = bj.z - bi.z;
-
-        // euclidean distance (avoid division by zero by adding a small constant)
-        float distSqr = dx * dx + dy * dy + dz * dz + NEAR_ZERO;
-        // inverse of the distance
-        float invDist = rsqrtf(distSqr);
-
-        // Newton's gravity, vectorial form
-        float F = G * bi.mass * bj.mass * powf(invDist, 3.0f);
-
-        // update net force over body for x,y,z
-        Fx += F * dx;
-        Fy += F * dy;
-        Fz += F * dz;
-    }
-
-    /** update velocity
-     * if (F = m * a) and (a =  dv/dt)
-     * then (F = m * dv/dt)
-     * then (dv = F * dt / m)
-     * then v = v + dv
-     * **/
-    bi.vx += Fx / bi.mass * dt;
-    bi.vy += Fy / bi.mass * dt;
-    bi.vz += Fz / bi.mass * dt;
-
-    /** update position
-     * v = dx/dt
-     * dx = dv * dt
-     * x = x + dx
-     **/
-    bi.x += bi.vx * dt;
-    bi.y += bi.vy * dt;
-    bi.z += bi.vz * dt;
-
-    // store the body back into GLOBAL MEMORY
-    bodies[i] = bi;
-}
-
-/**
-* CUDA kernel. Uses shared memory
- * @param bodies pointer to bodies array
- * @param n number of bodies
- */
-__global__ void updateBodiesUsingSharedMemory(Body* bodies, int n, float dt = 0.01f) {
-    // i is the body index (global thread index),
-    // each thread handles ONE BODY
-    int i = blockIdx.x * blockDim.x + threadIdx.x;
-
-    // index can go no longer than the number of bodies
-    if (i >= n) return;
-
-    // for this body
-    Body bi = bodies[i];
-
-    // border conditions, initial net force is null
-    float Fx = 0.0f, Fy = 0.0f, Fz = 0.0f;
-
-    // for each other body
-    for (int j = 0; j < n; ++j) {
-        // skip self
-        if (i == j) continue;
-        // this other body (global memory access here)
-        Body bj = bodies[j];
-
-        // the distance between bodies in x, y and z
-        float dx = bj.x - bi.x;
-        float dy = bj.y - bi.y;
-        float dz = bj.z - bi.z;
-
-        // euclidean distance (avoid division by zero by adding a small constant)
-        float distSqr = dx * dx + dy * dy + dz * dz + NEAR_ZERO;
-        // inverse of the distance
-        float invDist = rsqrtf(distSqr);
-
-        // Newton's gravity, vectorial form
-        float F = G * bi.mass * bj.mass * powf(invDist, 3.0f);
-
-        // update net force over body for x,y,z
-        Fx += F * dx;
-        Fy += F * dy;
-        Fz += F * dz;
-    }
-
-    /** update velocity
-     * if (F = m * a) and (a =  dv/dt)
-     * then (F = m * dv/dt)
-     * then (dv = F * dt / m)
-     * then v = v + dv
-     * **/
-    bi.vx += Fx / bi.mass * dt;
-    bi.vy += Fy / bi.mass * dt;
-    bi.vz += Fz / bi.mass * dt;
-
-    /** update position
-     * v = dx/dt
-     * dx = dv * dt
-     * x = x + dx
-     **/
-    bi.x += bi.vx * dt;
-    bi.y += bi.vy * dt;
-    bi.z += bi.vz * dt;
-
-    // store the body back into GLOBAL MEMORY
-    bodies[i] = bi;
-}
 
 /**
  * Host Function (CPU-side)
@@ -182,12 +39,13 @@ void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelF
     // for each step
     for (int s = 0; s < steps; ++s) {
         // kernel launch
-        //updateBodies<<<numBlocks, threadsPerBlock>>>(d_bodies, n);
+        //updateBodies<<<numBlocks, threadsPerBlock>>>(d_bodies,
+
         // Kernel args deben ser punteros a los datos
         void* kernelArgs[] = {
-            (void*)&d_bodies,
-            (void*)&n,
-            (void*)&dt
+            (void*) &d_bodies,
+            (void*) &n,
+            (void*) &dt
         };
 
         checkCudaErrors(
@@ -198,7 +56,6 @@ void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelF
             kernelArgs, nullptr)                // args
             );
 
-        // necesary to exchange info between streams
         cudaDeviceSynchronize();
     }
 

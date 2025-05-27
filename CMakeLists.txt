@@ -29,7 +29,9 @@ set(SOURCES
 
 # Ruta completa al kernel
 set(KERNEL_SRC ${CMAKE_SOURCE_DIR}/nbody_cuda/src/kernel_1.cu)
+set(KERNEL_SRC ${CMAKE_SOURCE_DIR}/nbody_cuda/src/kernel_2.cu)
 set(KERNEL_PTX ${CMAKE_BINARY_DIR}/kernel_1.ptx)
+set(KERNEL_PTX ${CMAKE_BINARY_DIR}/kernel_2.ptx)
 
 # Comando personalizado para generar PTX
 add_custom_command(
