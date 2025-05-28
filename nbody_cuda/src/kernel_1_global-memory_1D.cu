@@ -1,6 +1,6 @@
 //
 // Created by erick on 5/23/25.
-// kernel_1.cu
+// kernel_1_global-memory.cu
 //
 
 #include "include/nbody.h"
@@ -13,7 +13,7 @@ const float G = G_CONSTANT;
 extern "C" __global__ void updateBodies(Body* bodies, int n, float dt = 0.01f) {
     // i is the body index (global thread index),
     // each thread handles ONE BODY
-    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    int i = blockIdx.x * blockDim.x + threadIdx.x + blockIdx.y * blockDim.y + threadIdx.y;
 
     // index can go no longer than the number of bodies
     if (i >= n) return;

@@ -20,7 +20,7 @@ void benchmarkCPU(Body* bodies, int n, int steps, float dt, std::ofstream& out) 
 }
 
 void benchmarkGPU(int n, int steps, float dt, std::ofstream& out,
-                const std::string& kernelName, size_t localSize,
+                const std::string& kernelName, int localSize,
                 Body* gpuBodies) {
     std::cout << "\n[GPU] Simulando con n = " << n
             << ", steps = " << steps
@@ -48,13 +48,17 @@ void benchmarkGPU(int n, int steps, float dt, std::ofstream& out,
 int main() {
     const float dt = 0.01f;
 
+//    std::vector<int> sizes = {128};
     std::vector<int> sizes = {128, 256, 512, 1024, 2048, 4096};
-    std::vector<int> stepsList = {10};
-    std::vector<size_t> localSizes = {32, 64, 70, 96, 100, 128};
+
+    std::vector<int> stepsList = {10, 100, 1000};
+    std::vector<int> localSizes = {32, 64, 70, 96, 100, 128};
 
     std::vector<std::string> kernels = {
-        "kernel_1.ptx",
-        "kernel_2.ptx"
+        "kernel_1_global-memory_1D.ptx",
+        "kernel_2_shared-memory_1D.ptx",
+        "kernel_3_global-memory_2D.ptx",
+        "kernel_4_shared-memory_2D.ptx",
     };
 
     std::ofstream out("/media/storage/git/cc7515_t2/nbody_cuda/CUDA_resultados.csv");
@@ -75,7 +79,7 @@ int main() {
     for (const std::string& kernel : kernels) {
         for (int steps : stepsList) {
             for (int n : sizes) {
-                for (size_t localSize : localSizes) {
+                for (int localSize : localSizes) {
                     Body* bodiesGPU = new Body[n];
                     generateRandomBodies(bodiesGPU, n);
                     benchmarkGPU(n, steps, dt, out, kernel, localSize, bodiesGPU);

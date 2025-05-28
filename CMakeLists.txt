@@ -28,8 +28,10 @@ set(SOURCES
 
 # Kernel PTX generation
 set(KERNEL_SRCS
-        ${CMAKE_SOURCE_DIR}/nbody_cuda/src/kernel_1.cu
-        ${CMAKE_SOURCE_DIR}/nbody_cuda/src/kernel_2.cu
+        ${CMAKE_SOURCE_DIR}/nbody_cuda/src/kernel_1_global-memory_1D.cu
+        ${CMAKE_SOURCE_DIR}/nbody_cuda/src/kernel_2_shared-memory_1D.cu
+        ${CMAKE_SOURCE_DIR}/nbody_cuda/src/kernel_3_global-memory_2D.cu
+        ${CMAKE_SOURCE_DIR}/nbody_cuda/src/kernel_4_shared-memory_2D.cu
 )
 
 set(PTX_FILES "")

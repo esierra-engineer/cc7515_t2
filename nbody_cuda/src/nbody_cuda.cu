@@ -4,6 +4,7 @@
 #include "include/nbody.h"
 #include <cuda_runtime.h>
 #include "include/utils.h"
+#include <iostream>
 
 /**
  * Host Function (CPU-side)
@@ -16,7 +17,7 @@
  * @param n number of bodies
  * @param steps simulation steps
  */
-void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelFilename, size_t localSize, int n) {
+void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelFilename, int localSize, int n) {
     // destination memory address pointer
     Body* d_bodies;
     // in memory size of n bodies
@@ -29,18 +30,22 @@ void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelF
     cudaMemcpy(d_bodies, h_bodies, size, cudaMemcpyHostToDevice);
 
     // configure threads per block
-    size_t threadsPerBlock = localSize;
-    // The total number of blocks is the data size divided by the size of each block
-    size_t numBlocks = (n + threadsPerBlock - 1) / threadsPerBlock;
+    dim3 blockDim((int)sqrtf(localSize), (int)sqrtf(localSize));
+    int totalThreads = n;
+    int threadsPerBlock = blockDim.x * blockDim.y;
+    int blocksNeeded = (totalThreads + threadsPerBlock - 1) / threadsPerBlock;
+    dim3 gridDim((int)ceil(sqrtf(blocksNeeded)), (int)ceil((float)blocksNeeded / sqrtf(blocksNeeded)));
+
+
     size_t sharedMemSize = threadsPerBlock * sizeof(Body);
 
     // Kernel
-    CUfunction kernel = loadKernelSource(kernelFilename);
+    CUcontext context;
+    CUfunction kernel = loadKernelSource(kernelFilename, &context);
 
     // for each step
     for (int s = 0; s < steps; ++s) {
         // kernel launch
-        //updateBodies<<<numBlocks, threadsPerBlock>>>(d_bodies,
 
         // Kernel args deben ser punteros a los datos
         void* kernelArgs[] = {
@@ -50,11 +55,12 @@ void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelF
         };
 
         checkCudaErrors(
-            cuLaunchKernel(kernel,
-            numBlocks, 1, 1,                    // grid
-            threadsPerBlock, 1, 1,             // block
-            sharedMemSize, nullptr,                        // shared memory and stream
-            kernelArgs, nullptr)                // args
+            cuLaunchKernel(
+                kernel,
+                gridDim.x, gridDim.y, 1,                    // grid
+                blockDim.x, blockDim.y, 1,             // block
+                sharedMemSize, nullptr,                        // shared memory and stream
+                kernelArgs, nullptr)                // args
             );
 
         cudaDeviceSynchronize();
@@ -65,4 +71,6 @@ void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelF
 
     // free memory
     cudaFree(d_bodies);
+
+    cuCtxDestroy(context);
 }
