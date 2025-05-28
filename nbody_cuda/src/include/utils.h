@@ -8,8 +8,8 @@
 #include <cuda.h>
 #define checkCudaErrors(val) check( (val), #val, __FILE__, __LINE__ )
 
-CUfunction loadKernelSource(const char* filename);
-void generateRandomBodies(Body* bodies, int n);
+CUfunction loadKernelSource(const char* filename, CUcontext* context);
+
 void check(CUresult err, const char* func, const char* file, int line);
 
 #endif //UTILS_H

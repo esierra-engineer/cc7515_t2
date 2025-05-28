@@ -48,8 +48,8 @@ void benchmarkGPU(int n, int steps, float dt, std::ofstream& out,
 int main() {
     const float dt = 0.01f;
 
-    std::vector<int> sizes = {128, 256, 512};
-    std::vector<int> stepsList = {10, 100, 1000};
+    std::vector<int> sizes = {128, 256, 512, 1024, 2048, 4096};
+    std::vector<int> stepsList = {10};
     std::vector<size_t> localSizes = {32, 64, 70, 96, 100, 128};
 
     std::vector<std::string> kernels = {
@@ -75,13 +75,12 @@ int main() {
     for (const std::string& kernel : kernels) {
         for (int steps : stepsList) {
             for (int n : sizes) {
-                Body* bodiesGPU = new Body[n];
-                generateRandomBodies(bodiesGPU, n);
-
                 for (size_t localSize : localSizes) {
+                    Body* bodiesGPU = new Body[n];
+                    generateRandomBodies(bodiesGPU, n);
                     benchmarkGPU(n, steps, dt, out, kernel, localSize, bodiesGPU);
+                    delete[] bodiesGPU;
                 }
-                delete[] bodiesGPU;
             }
         }
     }

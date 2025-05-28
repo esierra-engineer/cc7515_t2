@@ -26,12 +26,12 @@ void generateRandomBodies(Body* bodies, int n) {
     }
 }
 
-CUfunction loadKernelSource(const char* filename) {
+CUfunction loadKernelSource(const char* filename, CUcontext* context) {
     checkCudaErrors(cuInit(0));
     CUdevice device;
     checkCudaErrors(cuDeviceGet(&device, 0));
-    CUcontext context;
-    checkCudaErrors(cuCtxCreate(&context, 0, device));
+    //CUcontext context;
+    checkCudaErrors(cuCtxCreate(context, 0, device));
 
     // Load PTX file
     CUmodule module;

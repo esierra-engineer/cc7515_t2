@@ -32,6 +32,7 @@ void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelF
     size_t threadsPerBlock = localSize;
     // The total number of blocks is the data size divided by the size of each block
     size_t numBlocks = (n + threadsPerBlock - 1) / threadsPerBlock;
+    size_t sharedMemSize = threadsPerBlock * sizeof(Body);
 
     // Kernel
     CUfunction kernel = loadKernelSource(kernelFilename);
@@ -52,7 +53,7 @@ void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelF
             cuLaunchKernel(kernel,
             numBlocks, 1, 1,                    // grid
             threadsPerBlock, 1, 1,             // block
-            0, nullptr,                        // shared memory and stream
+            sharedMemSize, nullptr,                        // shared memory and stream
             kernelArgs, nullptr)                // args
             );
 
