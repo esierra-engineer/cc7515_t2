@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project and language setup
+set(CMAKE_CUDA_COMPILER "/usr/local/cuda/bin/nvcc")
+set(CMAKE_CUDA_ARCHITECTURES native)
 project(nbody_cuda LANGUAGES CXX CUDA)
 
 # Compiler setup
-set(CMAKE_CUDA_COMPILER "/usr/local/cuda/bin/nvcc")
-set(CMAKE_CUDA_ARCHITECTURES native)
+
+
 
 # Standards
 set(CMAKE_CXX_STANDARD 14)
