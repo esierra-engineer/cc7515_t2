@@ -58,7 +58,7 @@ int main() {
     std::vector<int> sizes = {128, 256, 512, 1024, 2048, 4096};
     std::vector<int> stepsList = {10, 100, 1000};
     std::vector<std::string> kernels = {
-        "kernel.cl", "kernel_2d.cl", "kernel_local.cl"
+        "kernel.cl", "kernel_2d.cl", "kernel_local.cl", "kernel_2d_local.cl"
     };
     std::vector<size_t> localSizes = {32, 64, 70, 96, 100, 128};
 

@@ -3,7 +3,7 @@ __kernel void nbody_step(__global float4* posMass, __global float4* vel, float d
     int local_id = get_local_id(0);
     int local_size = get_local_size(0);
 
-    __local float4 sharedBodies[256]; // Tamaño fijo: asegúrate de no usar más de esto
+    __local float4 sharedBodies[256];
 
     if (i >= n) return;
 

@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "MinSizeRel/cc7515_t2.exe"
+			"path" : "RelWithDebInfo/cc7515_t2.exe"
 		},
 		{
-			"path" : "MinSizeRel/cc7515_t2.pdb"
+			"path" : "RelWithDebInfo/cc7515_t2.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -14,6 +14,8 @@
 		"commands" : 
 		[
 			"add_executable",
+			"target_link_libraries",
+			"add_dependencies",
 			"target_compile_options",
 			"include_directories"
 		],
@@ -29,19 +31,43 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 24,
+				"line" : 55,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 34,
+				"line" : 58,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 13,
+				"line" : 74,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 68,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 19,
 				"parent" : 0
 			}
 		]
@@ -52,18 +78,26 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++14"
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 4,
 					"fragment" : "-O2"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 5,
 					"path" : "D:/GitHub/cc7515_t2_ws/cc7515_t2/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_cuda/src"
 				}
 			],
 			"language" : "CXX",
@@ -73,7 +107,7 @@
 				[
 					1
 				],
-				"standard" : "11"
+				"standard" : "14"
 			},
 			"sourceIndexes" : 
 			[
@@ -86,18 +120,26 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-D_WINDOWS -Xcompiler=\"/W3 /GR /EHsc\" -Xcompiler=\"-MD -O1 -Ob1\" -DNDEBUG \"--generate-code=arch=compute_52,code=[compute_52,sm_52]\""
+					"fragment" : "-D_WINDOWS -Xcompiler=\"/W3 /GR /EHsc\" -Xcompiler=\"-MD  -Zi -O2 -Ob1\" -DNDEBUG -std=c++14 \"--generate-code=arch=compute_52,code=[compute_52,sm_52]\""
 				},
 				{
-					"backtrace" : 2,
+					"backtrace" : 4,
 					"fragment" : "--use_fast_math"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 5,
 					"path" : "D:/GitHub/cc7515_t2_ws/cc7515_t2/include"
+				},
+				{
+					"backtrace" : 6,
+					"path" : "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/include"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_cuda/src"
 				}
 			],
 			"language" : "CUDA",
@@ -107,7 +149,7 @@
 				[
 					1
 				],
-				"standard" : "11"
+				"standard" : "14"
 			},
 			"sourceIndexes" : 
 			[
@@ -119,6 +161,10 @@
 	[
 		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "compile_ptx::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "cc7515_t2::@6890427a1f51a3e7e1df",
@@ -127,11 +173,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /INCREMENTAL:NO",
+				"fragment" : "/machine:x64 /debug /INCREMENTAL",
 				"role" : "flags"
 			},
 			{
@@ -141,6 +187,11 @@
 			{
 				"fragment" : "-LIBPATH:C:\\PROGRA~1\\NVIDIA~2\\CUDA\\v12.9\\lib\\x64",
 				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "cuda.lib",
+				"role" : "libraries"
 			},
 			{
 				"fragment" : "cudadevrt.lib",

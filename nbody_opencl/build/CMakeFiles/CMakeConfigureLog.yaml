@@ -24,7 +24,7 @@ events:
       The output was:
       0
       Versi├│n de MSBuild 17.13.19+0d9f5a35a para .NET Framework
-      Compilaci├│n iniciada a las 11-05-2025 17:55:52.
+      Compilaci├│n iniciada a las 02-06-2025 12:36:36.
       
       Proyecto "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\4.0.2\\CompilerIdC\\CompilerIdC.vcxproj" en nodo 1 (destinos predeterminados).
       PrepareForBuild:
@@ -79,7 +79,7 @@ events:
       The output was:
       0
       Versi├│n de MSBuild 17.13.19+0d9f5a35a para .NET Framework
-      Compilaci├│n iniciada a las 11-05-2025 17:55:52.
+      Compilaci├│n iniciada a las 02-06-2025 12:36:37.
       
       Proyecto "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\4.0.2\\CompilerIdCXX\\CompilerIdCXX.vcxproj" en nodo 1 (destinos predeterminados).
       PrepareForBuild:
@@ -127,8 +127,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-tndaug"
-      binary: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-tndaug"
+      source: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-737di7"
+      binary: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-737di7"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -137,40 +137,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-tndaug'
+        Change Dir: 'D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-737di7'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_fd262.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a5eb0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         Versi├│n de MSBuild 17.13.19+0d9f5a35a para .NET Framework
-        Compilaci├│n iniciada a las 11-05-2025 17:55:53.
+        Compilaci├│n iniciada a las 02-06-2025 12:36:37.
         
-        Proyecto "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tndaug\\cmTC_fd262.vcxproj" en nodo 1 (destinos predeterminados).
+        Proyecto "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-737di7\\cmTC_a5eb0.vcxproj" en nodo 1 (destinos predeterminados).
         PrepareForBuild:
-          Creando directorio "cmTC_fd262.dir\\Debug\\".
+          Creando directorio "cmTC_a5eb0.dir\\Debug\\".
           La salida estructurada est├í habilitada. El formato del diagn├│stico del compilador reflejar├í la jerarqu├¡a de errores. Consulte https://aka.ms/cpp/structured-output para obtener m├ís detalles.
-          Creando directorio "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tndaug\\Debug\\".
-          Creando directorio "cmTC_fd262.dir\\Debug\\cmTC_fd262.tlog\\".
+          Creando directorio "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-737di7\\Debug\\".
+          Creando directorio "cmTC_a5eb0.dir\\Debug\\cmTC_a5eb0.tlog\\".
         InitializeBuildStatus:
-          Se crear├í "cmTC_fd262.dir\\Debug\\cmTC_fd262.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
-          Aplicando tarea Touch a "cmTC_fd262.dir\\Debug\\cmTC_fd262.tlog\\unsuccessfulbuild".
+          Se crear├í "cmTC_a5eb0.dir\\Debug\\cmTC_a5eb0.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
+          Aplicando tarea Touch a "cmTC_a5eb0.dir\\Debug\\cmTC_a5eb0.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fd262.dir\\Debug\\\\" /Fd"cmTC_fd262.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a5eb0.dir\\Debug\\\\" /Fd"cmTC_a5eb0.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
           Compilador de optimizaci├│n de C/C++ de Microsoft (R) versi├│n 19.43.34810 para x64
           (C) Microsoft Corporation. Todos los derechos reservados.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fd262.dir\\Debug\\\\" /Fd"cmTC_fd262.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a5eb0.dir\\Debug\\\\" /Fd"cmTC_a5eb0.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tndaug\\Debug\\cmTC_fd262.exe" /INCREMENTAL /ILK:"cmTC_fd262.dir\\Debug\\cmTC_fd262.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-tndaug/Debug/cmTC_fd262.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-tndaug/Debug/cmTC_fd262.lib" /MACHINE:X64  /machine:x64 cmTC_fd262.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_fd262.vcxproj -> D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tndaug\\Debug\\cmTC_fd262.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-737di7\\Debug\\cmTC_a5eb0.exe" /INCREMENTAL /ILK:"cmTC_a5eb0.dir\\Debug\\cmTC_a5eb0.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-737di7/Debug/cmTC_a5eb0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-737di7/Debug/cmTC_a5eb0.lib" /MACHINE:X64  /machine:x64 cmTC_a5eb0.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_a5eb0.vcxproj -> D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-737di7\\Debug\\cmTC_a5eb0.exe
         FinalizeBuildStatus:
-          Se eliminar├í el archivo "cmTC_fd262.dir\\Debug\\cmTC_fd262.tlog\\unsuccessfulbuild".
-          Aplicando tarea Touch a "cmTC_fd262.dir\\Debug\\cmTC_fd262.tlog\\cmTC_fd262.lastbuildstate".
-        Compilaci├│n del proyecto terminada "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tndaug\\cmTC_fd262.vcxproj" (destinos predeterminados).
+          Se eliminar├í el archivo "cmTC_a5eb0.dir\\Debug\\cmTC_a5eb0.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_a5eb0.dir\\Debug\\cmTC_a5eb0.tlog\\cmTC_a5eb0.lastbuildstate".
+        Compilaci├│n del proyecto terminada "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-737di7\\cmTC_a5eb0.vcxproj" (destinos predeterminados).
         
         Compilaci├│n correcta.
             0 Advertencia(s)
             0 Errores
         
-        Tiempo transcurrido 00:00:00.48
+        Tiempo transcurrido 00:00:00.50
         
       exitCode: 0
   -
@@ -210,8 +210,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-1fdv4r"
-      binary: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-1fdv4r"
+      source: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-ys3hy6"
+      binary: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-ys3hy6"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -221,40 +221,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-1fdv4r'
+        Change Dir: 'D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-ys3hy6'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f2b68.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7ca35.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         Versi├│n de MSBuild 17.13.19+0d9f5a35a para .NET Framework
-        Compilaci├│n iniciada a las 11-05-2025 17:55:54.
+        Compilaci├│n iniciada a las 02-06-2025 12:36:38.
         
-        Proyecto "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1fdv4r\\cmTC_f2b68.vcxproj" en nodo 1 (destinos predeterminados).
+        Proyecto "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ys3hy6\\cmTC_7ca35.vcxproj" en nodo 1 (destinos predeterminados).
         PrepareForBuild:
-          Creando directorio "cmTC_f2b68.dir\\Debug\\".
+          Creando directorio "cmTC_7ca35.dir\\Debug\\".
           La salida estructurada est├í habilitada. El formato del diagn├│stico del compilador reflejar├í la jerarqu├¡a de errores. Consulte https://aka.ms/cpp/structured-output para obtener m├ís detalles.
-          Creando directorio "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1fdv4r\\Debug\\".
-          Creando directorio "cmTC_f2b68.dir\\Debug\\cmTC_f2b68.tlog\\".
+          Creando directorio "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ys3hy6\\Debug\\".
+          Creando directorio "cmTC_7ca35.dir\\Debug\\cmTC_7ca35.tlog\\".
         InitializeBuildStatus:
-          Se crear├í "cmTC_f2b68.dir\\Debug\\cmTC_f2b68.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
-          Aplicando tarea Touch a "cmTC_f2b68.dir\\Debug\\cmTC_f2b68.tlog\\unsuccessfulbuild".
+          Se crear├í "cmTC_7ca35.dir\\Debug\\cmTC_7ca35.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
+          Aplicando tarea Touch a "cmTC_7ca35.dir\\Debug\\cmTC_7ca35.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f2b68.dir\\Debug\\\\" /Fd"cmTC_f2b68.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_7ca35.dir\\Debug\\\\" /Fd"cmTC_7ca35.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
           Compilador de optimizaci├│n de C/C++ de Microsoft (R) versi├│n 19.43.34810 para x64
           (C) Microsoft Corporation. Todos los derechos reservados.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f2b68.dir\\Debug\\\\" /Fd"cmTC_f2b68.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_7ca35.dir\\Debug\\\\" /Fd"cmTC_7ca35.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.0\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1fdv4r\\Debug\\cmTC_f2b68.exe" /INCREMENTAL /ILK:"cmTC_f2b68.dir\\Debug\\cmTC_f2b68.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-1fdv4r/Debug/cmTC_f2b68.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-1fdv4r/Debug/cmTC_f2b68.lib" /MACHINE:X64  /machine:x64 cmTC_f2b68.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_f2b68.vcxproj -> D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1fdv4r\\Debug\\cmTC_f2b68.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ys3hy6\\Debug\\cmTC_7ca35.exe" /INCREMENTAL /ILK:"cmTC_7ca35.dir\\Debug\\cmTC_7ca35.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-ys3hy6/Debug/cmTC_7ca35.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-ys3hy6/Debug/cmTC_7ca35.lib" /MACHINE:X64  /machine:x64 cmTC_7ca35.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_7ca35.vcxproj -> D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ys3hy6\\Debug\\cmTC_7ca35.exe
         FinalizeBuildStatus:
-          Se eliminar├í el archivo "cmTC_f2b68.dir\\Debug\\cmTC_f2b68.tlog\\unsuccessfulbuild".
-          Aplicando tarea Touch a "cmTC_f2b68.dir\\Debug\\cmTC_f2b68.tlog\\cmTC_f2b68.lastbuildstate".
-        Compilaci├│n del proyecto terminada "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1fdv4r\\cmTC_f2b68.vcxproj" (destinos predeterminados).
+          Se eliminar├í el archivo "cmTC_7ca35.dir\\Debug\\cmTC_7ca35.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_7ca35.dir\\Debug\\cmTC_7ca35.tlog\\cmTC_7ca35.lastbuildstate".
+        Compilaci├│n del proyecto terminada "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ys3hy6\\cmTC_7ca35.vcxproj" (destinos predeterminados).
         
         Compilaci├│n correcta.
             0 Advertencia(s)
             0 Errores
         
-        Tiempo transcurrido 00:00:00.48
+        Tiempo transcurrido 00:00:00.50
         
       exitCode: 0
   -
@@ -296,8 +296,8 @@ events:
     checks:
       - "Looking for CL_VERSION_3_0"
     directories:
-      source: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-icodxy"
-      binary: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-icodxy"
+      source: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-go4fra"
+      binary: "D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-go4fra"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -306,41 +306,41 @@ events:
       variable: "OPENCL_VERSION_3_0"
       cached: true
       stdout: |
-        Change Dir: 'D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-icodxy'
+        Change Dir: 'D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-go4fra'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_85d69.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d13c7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         Versi├│n de MSBuild 17.13.19+0d9f5a35a para .NET Framework
-        Compilaci├│n iniciada a las 11-05-2025 17:55:55.
+        Compilaci├│n iniciada a las 02-06-2025 12:36:39.
         
-        Proyecto "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-icodxy\\cmTC_85d69.vcxproj" en nodo 1 (destinos predeterminados).
+        Proyecto "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-go4fra\\cmTC_d13c7.vcxproj" en nodo 1 (destinos predeterminados).
         PrepareForBuild:
-          Creando directorio "cmTC_85d69.dir\\Debug\\".
+          Creando directorio "cmTC_d13c7.dir\\Debug\\".
           La salida estructurada est├í habilitada. El formato del diagn├│stico del compilador reflejar├í la jerarqu├¡a de errores. Consulte https://aka.ms/cpp/structured-output para obtener m├ís detalles.
-          Creando directorio "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-icodxy\\Debug\\".
-          Creando directorio "cmTC_85d69.dir\\Debug\\cmTC_85d69.tlog\\".
+          Creando directorio "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-go4fra\\Debug\\".
+          Creando directorio "cmTC_d13c7.dir\\Debug\\cmTC_d13c7.tlog\\".
         InitializeBuildStatus:
-          Se crear├í "cmTC_85d69.dir\\Debug\\cmTC_85d69.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
-          Aplicando tarea Touch a "cmTC_85d69.dir\\Debug\\cmTC_85d69.tlog\\unsuccessfulbuild".
+          Se crear├í "cmTC_d13c7.dir\\Debug\\cmTC_d13c7.tlog\\unsuccessfulbuild" porque se especific├│ "AlwaysCreate".
+          Aplicando tarea Touch a "cmTC_d13c7.dir\\Debug\\cmTC_d13c7.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.9\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_85d69.dir\\Debug\\\\" /Fd"cmTC_85d69.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-icodxy\\CheckSymbolExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.9\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d13c7.dir\\Debug\\\\" /Fd"cmTC_d13c7.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-go4fra\\CheckSymbolExists.c"
           Compilador de optimizaci├│n de C/C++ de Microsoft (R) versi├│n 19.43.34810 para x64
           (C) Microsoft Corporation. Todos los derechos reservados.
-          cl /c /I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.9\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_85d69.dir\\Debug\\\\" /Fd"cmTC_85d69.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-icodxy\\CheckSymbolExists.c"
+          cl /c /I"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.9\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d13c7.dir\\Debug\\\\" /Fd"cmTC_d13c7.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-go4fra\\CheckSymbolExists.c"
           CheckSymbolExists.c
           cl_version.h: CL_TARGET_OPENCL_VERSION is not defined. Defaulting to 300 (OpenCL 3.0)
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-icodxy\\Debug\\cmTC_85d69.exe" /INCREMENTAL /ILK:"cmTC_85d69.dir\\Debug\\cmTC_85d69.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-icodxy/Debug/cmTC_85d69.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-icodxy/Debug/cmTC_85d69.lib" /MACHINE:X64  /machine:x64 cmTC_85d69.dir\\Debug\\CheckSymbolExists.obj
-          cmTC_85d69.vcxproj -> D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-icodxy\\Debug\\cmTC_85d69.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-go4fra\\Debug\\cmTC_d13c7.exe" /INCREMENTAL /ILK:"cmTC_d13c7.dir\\Debug\\cmTC_d13c7.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-go4fra/Debug/cmTC_d13c7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/GitHub/cc7515_t2_ws/cc7515_t2/nbody_opencl/build/CMakeFiles/CMakeScratch/TryCompile-go4fra/Debug/cmTC_d13c7.lib" /MACHINE:X64  /machine:x64 cmTC_d13c7.dir\\Debug\\CheckSymbolExists.obj
+          cmTC_d13c7.vcxproj -> D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-go4fra\\Debug\\cmTC_d13c7.exe
         FinalizeBuildStatus:
-          Se eliminar├í el archivo "cmTC_85d69.dir\\Debug\\cmTC_85d69.tlog\\unsuccessfulbuild".
-          Aplicando tarea Touch a "cmTC_85d69.dir\\Debug\\cmTC_85d69.tlog\\cmTC_85d69.lastbuildstate".
-        Compilaci├│n del proyecto terminada "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-icodxy\\cmTC_85d69.vcxproj" (destinos predeterminados).
+          Se eliminar├í el archivo "cmTC_d13c7.dir\\Debug\\cmTC_d13c7.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_d13c7.dir\\Debug\\cmTC_d13c7.tlog\\cmTC_d13c7.lastbuildstate".
+        Compilaci├│n del proyecto terminada "D:\\GitHub\\cc7515_t2_ws\\cc7515_t2\\nbody_opencl\\build\\CMakeFiles\\CMakeScratch\\TryCompile-go4fra\\cmTC_d13c7.vcxproj" (destinos predeterminados).
         
         Compilaci├│n correcta.
             0 Advertencia(s)
             0 Errores
         
-        Tiempo transcurrido 00:00:00.49
+        Tiempo transcurrido 00:00:00.51
         
       exitCode: 0
 ...

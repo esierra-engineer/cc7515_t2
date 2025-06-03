@@ -21,7 +21,6 @@ const char* loadKernelSource(const char* filename) {
 }
 
 void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt, const char* kernelFilename, size_t localSize) {
-
     int n = bodies.size();
     cl_int err;
 
@@ -85,6 +84,11 @@ void runNBodyOpenCL(std::vector<Body>& bodies, int steps, float dt, const char* 
         err |= clSetKernelArg(kernel, 1, sizeof(cl_mem), &velBuf);
         err |= clSetKernelArg(kernel, 2, sizeof(float), &dt);
         err |= clSetKernelArg(kernel, 3, sizeof(int), &n);
+
+        if (std::string(kernelFilename).find("2d_local") != std::string::npos) {
+            err |= clSetKernelArg(kernel, 4, localSize * sizeof(cl_float4), nullptr);
+        }
+
         CHECK_CL(err, "Failed to set kernel args");
 
         err = clEnqueueNDRangeKernel(queue, kernel, 1, nullptr, &globalSize, &localSize, 0, nullptr, nullptr);

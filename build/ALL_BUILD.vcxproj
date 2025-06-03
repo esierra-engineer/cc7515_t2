@@ -70,7 +70,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\GitHub\cc7515_t2_ws\cc7515_t2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\cc7515_t2_ws\cc7515_t2\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.9\include;D:\GitHub\cc7515_t2_ws\cc7515_t2\nbody_cuda\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -80,7 +80,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\GitHub\cc7515_t2_ws\cc7515_t2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\cc7515_t2_ws\cc7515_t2\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.9\include;D:\GitHub\cc7515_t2_ws\cc7515_t2\nbody_cuda\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -90,7 +90,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\GitHub\cc7515_t2_ws\cc7515_t2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\cc7515_t2_ws\cc7515_t2\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.9\include;D:\GitHub\cc7515_t2_ws\cc7515_t2\nbody_cuda\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -100,7 +100,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>D:\GitHub\cc7515_t2_ws\cc7515_t2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHub\cc7515_t2_ws\cc7515_t2\include;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.9\include;D:\GitHub\cc7515_t2_ws\cc7515_t2\nbody_cuda\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -178,6 +178,12 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="D:\GitHub\cc7515_t2_ws\cc7515_t2\build\cc7515_t2.vcxproj">
       <Project>{EB7C38C2-F44C-3D70-8FE2-04416C74CFF5}</Project>
       <Name>cc7515_t2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\GitHub\cc7515_t2_ws\cc7515_t2\build\compile_ptx.vcxproj">
+      <Project>{1428025F-84B3-34F9-99FC-F908B6BDFD19}</Project>
+      <Name>compile_ptx</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

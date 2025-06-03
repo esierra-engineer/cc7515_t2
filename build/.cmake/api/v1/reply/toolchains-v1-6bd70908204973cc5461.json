@@ -16,7 +16,7 @@
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : []
 				},
-				"path" : "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.9/bin/nvcc.exe",
+				"path" : "/usr/local/cuda/bin/nvcc",
 				"version" : "12.9.41"
 			},
 			"language" : "CUDA",
