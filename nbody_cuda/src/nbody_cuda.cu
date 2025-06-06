@@ -30,9 +30,10 @@ void simulateNBodyCUDA(Body* h_bodies,  int steps, float dt, const char* kernelF
     cudaMemcpy(d_bodies, h_bodies, size, cudaMemcpyHostToDevice);
 
     // configure threads per block
-    dim3 blockDim((int)sqrtf(localSize), (int)sqrtf(localSize));
+    dim3 blockDim(localSize / 2, localSize / 2);
     int totalThreads = n;
-    int threadsPerBlock = blockDim.x * blockDim.y;
+
+    int threadsPerBlock = localSize / 2;
     int blocksNeeded = (totalThreads + threadsPerBlock - 1) / threadsPerBlock;
     dim3 gridDim((int)ceil(sqrtf(blocksNeeded)), (int)ceil((float)blocksNeeded / sqrtf(blocksNeeded)));
 

@@ -20,11 +20,10 @@ methods = sorted(df_gpu["method"].unique())
 local_sizes = sorted(df_gpu["localSize"].dropna().unique())
 colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple', 'tab:brown', 'tab:gray']
 
-# --- GRAFICOS AGRUPADOS (mejor caso por método) ---
+# --- Mejores casos ---
 agg_gpu = df_gpu.groupby(["n", "steps", "method"])["time"].min().reset_index()
 
 for steps in steps_list:
-    # --- Tiempo de ejecución simplificado ---
     plt.figure(figsize=(10, 6))
     subset_cpu = df_cpu[df_cpu["steps"] == steps]
     plt.plot(subset_cpu["n"], subset_cpu["time"], label="CPU", marker='x', color="black")
@@ -43,43 +42,41 @@ for steps in steps_list:
     plt.savefig(f"plots/times_best_steps_{steps}.png")
     plt.close()
 
-    # --- Speedup simplificado ---
+    # --- Speedup  ---
+    plt.figure(figsize=(10, 6))
     for i, method in enumerate(methods):
         subset_gpu = agg_gpu[(agg_gpu["steps"] == steps) & (agg_gpu["method"] == method)]
         merged_simple = pd.merge(subset_cpu, subset_gpu, on="n", suffixes=("_cpu", "_gpu"))
         if not merged_simple.empty:
             merged_simple["speedup"] = merged_simple["time_cpu"] / merged_simple["time_gpu"]
-            plt.figure(figsize=(10, 6))
             plt.plot(merged_simple["n"], merged_simple["speedup"], label=method, marker='s', color=colors[i % len(colors)])
-            plt.title(f"Speedup (CPU / mejor {method}) - steps = {steps}")
-            plt.xlabel("Número de cuerpos (n)")
-            plt.ylabel("Speedup")
-            plt.legend()
-            plt.grid(True)
-            plt.tight_layout()
-            plt.savefig(f"plots/speedup_best_steps_{steps}_{method}.png")
-            plt.close()
+    plt.title(f"Speedup (CPU / mejor caso GPU) - steps = {steps}")
+    plt.xlabel("Número de cuerpos (n)")
+    plt.ylabel("Speedup")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f"plots/speedup_combined_steps_{steps}.png")
+    plt.close()
 
-# --- SUBPLOTS por método y localSize ---
+# --- SUBPLOTS separados por método ---
 for steps in steps_list:
-    fig, axs = plt.subplots(len(methods), 1, figsize=(10, 4 * len(methods)), sharex=True)
-
     for i, method in enumerate(methods):
-        ax = axs[i] if len(methods) > 1 else axs
+        plt.figure(figsize=(10, 6))
         for ls in local_sizes:
             subset = df_gpu[(df_gpu["steps"] == steps) & (df_gpu["method"] == method) & (df_gpu["localSize"] == ls)]
             if not subset.empty:
                 label = f"ls={ls}"
-                ax.plot(subset["n"], subset["time"], label=label, marker='o')
+                plt.plot(subset["n"], subset["time"], label=label, marker='o')
 
-        ax.set_title(f"{method} - steps = {steps}")
-        ax.set_ylabel("Tiempo (s)")
-        ax.grid(True)
-        ax.legend()
-
-    axs[-1].set_xlabel("Número de cuerpos (n)")
-    plt.tight_layout()
-    plt.savefig(f"plots/subplots_times_steps_{steps}.png")
-    plt.close()
+        plt.title(f"{method} - steps = {steps}")
+        plt.xlabel("Número de cuerpos (n)")
+        plt.ylabel("Tiempo (s)")
+        plt.grid(True)
+        plt.legend()
+        plt.tight_layout()
+        filename = f"plots/subplot_times_steps_{steps}_{method}.png"
+        plt.savefig(filename)
+        plt.close()
 
 print("Gráficos generados en carpeta 'plots'.")
